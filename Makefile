@@ -5,7 +5,9 @@ PATH := $(PWD)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 
 .PHONY: all
-all: status helloWorld/ hello_cargo/
+all: status helloWorld/ \
+     hello_cargo/ \
+     guessing_game/
 
 .PHONY: clean
 clean:
@@ -24,6 +26,12 @@ helloWorld/:
 hello_cargo/:
 	@echo Running hello_cargo/
 	make -C $@
+
+.PHONY: guessing_game/
+guessing_game/:
+	@echo Running hello_cargo/
+	make -C $@
+
 
 .env:
 	touch $@
