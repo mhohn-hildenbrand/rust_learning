@@ -3,6 +3,7 @@ source $(dirname $0)/../defaults.env
 source $(dirname $0)/../.env
 
 cmd="podman run --rm --interactive --tty \
+	--env="CARGO_HOME=$PWD/.cargo" \
 	--volume=$PWD:$PWD \
 	--workdir=$PWD \
 	--entrypoint=cargo \
