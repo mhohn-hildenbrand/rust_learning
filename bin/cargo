@@ -1,0 +1,12 @@
+
+source $(dirname $0)/../defaults.env
+source $(dirname $0)/../.env
+
+cmd="podman run --rm --interactive --tty \
+	--volume=$PWD:$PWD \
+	--workdir=$PWD \
+	--entrypoint=cargo \
+	$RUST_IMAGE $*"
+echo $cmd
+$cmd
+
