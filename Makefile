@@ -32,6 +32,10 @@ guessing_game/:
 	@echo Running hello_cargo/
 	make -C $@
 
+.PHONY: variables/
+variables/:
+	@echo Running variables/
+	make -C $@
 
 .env:
 	touch $@
