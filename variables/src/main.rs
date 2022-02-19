@@ -97,4 +97,25 @@ fn main() {
 	println!("Using Array indexing: {}", _my_array[2]);
 		// Note that using an out-of-bounds index will throw a runtime error
 
+	// A function.
+	print_labeled_measurement(21, 'h');
+
+	// Rust treats "Statements" (no return value) distinct from "Expressions" (return value)
+
+	let _this_is_a_statement = 37;
+
+	println!(
+		"This is a statement that consumes an expression: {}",
+		this_is_a_function_using_an_expression_to_return_a_value()
+	);
+
+}
+
+fn print_labeled_measurement(x: i32, unit: char) {
+	println!("the value of x is: {}{}", x, unit);
+}
+
+fn this_is_a_function_using_an_expression_to_return_a_value() -> u32 { // the -> u32 indicates the function has a
+																																			// return value with type u32
+	7 + 13 // Expressions do not end with a semicolon
 }
