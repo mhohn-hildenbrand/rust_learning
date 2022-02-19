@@ -7,7 +7,9 @@ SHELL := env PATH=$(PATH) /bin/bash
 .PHONY: all
 all: status helloWorld/ \
      hello_cargo/ \
-     guessing_game/
+     guessing_game/ \
+		 variables/ \
+     branches/
 
 .PHONY: clean
 clean:
@@ -35,6 +37,11 @@ guessing_game/:
 .PHONY: variables/
 variables/:
 	@echo Running variables/
+	make -C $@
+
+.PHONY: branches/
+branches/:
+	@echo Running branches/
 	make -C $@
 
 .env:
