@@ -10,6 +10,12 @@ fn main() {
 
 	tuples_to_control_ownership_demo();
 
+	passing_by_reference_demo();
+
+	mutable_reference_demo();
+
+	dangleing_reference_demo();
+
 }
 
 fn string_demo () {
@@ -85,4 +91,43 @@ fn tuples_to_control_ownership_demo() {
 fn calculate_length(some_string: String) -> (String, usize) {
 	let length = some_string.len(); 
 	(some_string, length)
+}
+
+fn passing_by_reference_demo() {
+	let s1 = String::from("hello");
+
+	let len = calculate_length_by_reference(&s1);
+
+	println!("The length of '{}' is {}", s1, len); // because we never passed ownership of s1, it's still available.
+
+}
+
+fn calculate_length_by_reference( some_string: &String ) -> usize {
+	// some_string.push_str(", world!"); // This won't work, because you can't modify something you don't own.
+	some_string.len()
+}
+
+fn mutable_reference_demo() {
+	let mut s = String::from("hello");
+
+	let _r1 = &mut s;
+	// let r2 = &mut s; // this will fail, because their can only be one mutable reference at a time.
+	// println!("{}, {}", r1, r2);
+	// further, you can't mix immutable and mutable references
+}
+	
+fn dangleing_reference_demo() {
+	//let s1 = danggle();
+	let s2 = no_dangle();	
+}
+
+// fn dangle() -> &String {
+	// let s = String::from("hello");
+	// &s // This will create a compile error because s goes out of scope, leaving &s dangling
+// }
+	
+
+fn no_dangle() -> String {
+	let s = String::from("hello");
+	s
 }
