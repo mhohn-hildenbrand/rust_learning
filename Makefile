@@ -9,7 +9,8 @@ all: status helloWorld/ \
      hello_cargo/ \
      guessing_game/ \
 		 variables/ \
-     branches/
+     branches/ \
+		 ownership/
 
 .PHONY: clean
 clean:
@@ -42,6 +43,11 @@ variables/:
 .PHONY: branches/
 branches/:
 	@echo Running branches/
+	make -C $@
+
+.PHONY: ownership/
+ownership/:
+	@echo Running ownership/
 	make -C $@
 
 .env:
